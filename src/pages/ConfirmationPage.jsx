@@ -10,7 +10,7 @@ export const ConfirmationPage = () => {
 
   const sendData = async () => {
     try {
-    const response = await axios.post('http://localhost:3000/confirmar-turno', {
+    const response = await axios.post('https://luci-web-backend-production.up.railway.app/confirmar-turno', {
         datosCliente: patientData,
         datosTurno: shiftReservated
     })

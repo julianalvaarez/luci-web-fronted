@@ -10,7 +10,7 @@ initMercadoPago('TEST-d34b7891-5e67-440b-a103-ad50da9cfd82', {
 
 const createPreference = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/create_preference', {
+        const response = await axios.post('https://luci-web-backend-production.up.railway.app/create_preference', {
             title: 'Turno Nutricional',
             quantity: 1,
             price: 5000,

@@ -9,7 +9,7 @@ export const Footer = () => {
 
   const sendMessage = async () => {
     try {
-    const response = await axios.post('http://localhost:3000/send-message', formState)
+    const response = await axios.post('https://luci-web-backend-production.up.railway.app/send-message', formState)
     console.log(response);
     } catch (error) {
         console.log(error);

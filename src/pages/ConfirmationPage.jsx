@@ -5,8 +5,19 @@ import axios from "axios";
 export const ConfirmationPage = () => {
 
   const { patientData, shiftReservated } = useContext(PatientContext);
-  const { name, surname  } = patientData;
+  const { name, surname, email  } = patientData;
   const { fecha, horaInicio, horaFin } = shiftReservated;
+
+  const sendMessage = async () => {
+    try {
+    const response = await axios.post('https://luci-web-backend-production.up.railway.app/shift-confirmated', {
+      name, surname, email, fecha, horaFin, horaInicio
+    })
+    console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+  }
 
   const sendData = async () => {
     try {
@@ -21,6 +32,7 @@ export const ConfirmationPage = () => {
 
   useEffect(() => {
     sendData()
+    sendMessage()
   }, [])
   
 

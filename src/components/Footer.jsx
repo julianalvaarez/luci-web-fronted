@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "../hooks/useForm";
 import axios from 'axios';
 
@@ -6,6 +7,7 @@ const formData = { name: "", email: "", subject: "", message: "" };
 export const Footer = () => {
   const { formState, onInputChange, onResetForm } = useForm(formData);
   const { name, email, subject, message } = formState;
+  const [alertState, setAlertState] = useState(false)
 
   const sendMessage = async () => {
     try {
@@ -20,6 +22,10 @@ export const Footer = () => {
     e.preventDefault();
     sendMessage()
     onResetForm()
+    setAlertState(true)
+    setTimeout(() => {
+      setAlertState(false)
+    }, 2000);
   }
   return (
     <>
@@ -75,7 +81,8 @@ export const Footer = () => {
                 className="w-full px-4 py-4 border md:rounded-md  transition duration-300"
               ></textarea>
             </div>
-            <div className="flex justify-center md:justify-start">
+            <div className="flex items-center flex-col md:flex-row md:justify-start">
+              <span className={`py-2 px-3 border bg-green-100 border-green-600 text-green-800 rounded-md mb-2 ${alertState ? 'visible' : 'hidden'}`}>Mensaje Enviado Correctamente!</span>
               <button
                 type="submit"
                 className="bg-amber-600 text-white px-5 py-2 rounded-md hover:bg-amber-700 active:bg-amber-800 transition duration-300"

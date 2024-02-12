@@ -20,7 +20,7 @@ export const Questions = () => {
             <QuestionCard question='¿CON QUÉ FRECUENCIA SON LAS CONSULTAS?' text='La frecuencia es variable dependiendo del paciente y lo que
                 necesite este.' />
 
-            <QuestionCard question='¿CÓMO PUEDO AGENDAR UNA CITA?' text='Puedes hacerlo vía WhatsApp.' />
+            <QuestionCard question='¿CÓMO PUEDO AGENDAR UNA CITA?' text='Puedes hacerlo vía WhatsApp o en la seccion de Agenda tu Turno.' />
 
             <QuestionCard question='¿QUÉ INFORMACIÓN DEBO TENER EN LA PRIMER CONSULTA?' text='Se necesita únicamente los últimos estudios médicos del paciente
                 en cuestión.' />

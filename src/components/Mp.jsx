@@ -36,7 +36,7 @@ useEffect(() => {
 
   return (
     <div>
-        {preferenceId && <Wallet initialization={{ preferenceId }} />}
+        {preferenceId && <Wallet initialization={{ preferenceId, redirectMode: 'modal' }} />}
     </div>
   )
 }

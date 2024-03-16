@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { PatientContext } from "../context/PatientContext";
 import { Mp } from "../components";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export const PayPage = () => {
   const { patientData, shiftReservated } = useContext(PatientContext);
@@ -29,11 +30,16 @@ export const PayPage = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center mt-8 gap-6">
+        <div className="flex flex-col justify-center items-center mt-8 gap-6">
           {/* <button className="bg-blue-500 mb-5 text-white py-3 px-6 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
             Confirmar Compra
           </button> */}
           <Mp />
+          {/* <div className="w-full md:px-16">
+            <PayPalScriptProvider>
+              <PayPalButtons onApprove={() => console.log('pago realizado')} />
+            </PayPalScriptProvider>
+          </div> */}
         </div>
       </div>
     </section>

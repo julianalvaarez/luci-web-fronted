@@ -1,40 +1,7 @@
-import { useContext, useEffect } from "react";
-import { PatientContext } from "../context/PatientContext";
-import axios from "axios";
 
 export const ConfirmationPage = () => {
 
-  const { patientData, shiftReservated } = useContext(PatientContext);
-  const { name, surname, email  } = patientData;
-  const { fecha, horaInicio, horaFin } = shiftReservated;
 
-  const sendMessage = async () => {
-    try {
-    const response = await axios.post('https://luci-web-backend-production.up.railway.app/shift-confirmated', {
-      name, surname, email, fecha, horaFin, horaInicio
-    })
-    console.log(response);
-    } catch (error) {
-        console.log(error);
-    }
-  }
-
-  const sendData = async () => {
-    try {
-    const response = await axios.post('https://luci-web-backend-production.up.railway.app/confirmar-turno', {
-        datosCliente: patientData,
-        datosTurno: shiftReservated
-    })
-    } catch (error) {
-        console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    sendData()
-    sendMessage()
-  }, [])
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center sm:bg-gray-100">

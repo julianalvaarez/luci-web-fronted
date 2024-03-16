@@ -24,12 +24,12 @@ export const Buy = () => {
                   Información de la Consulta
                 </h3>
                 <p className="mt-2 text-sm text-gray-600 text-balance">
-                  ¡Te ofrezco nuestra primera consulta por el precio de $5000! Para esta, tan solo se requiere que traiga los últimos
+                  ¡Te ofrezco nuestra primera consulta por el precio de 8000ARS o 10USD! Para esta, tan solo se requiere que traiga los últimos
                   estudios médicos. No dude en consultarme ante
                   cualquier duda o inquietud que pueda tener.
                 </p>
                 <button onClick={handleNavigate} className="md:mt-4 mt-10 px-6  py-3 bg-amber-500 text-white rounded-md hover:bg-amber-600 active:bg-amber-700 focus:border-amber-300 ">
-                  Agendar Ahora por 5000 ARS
+                  Agendar por 8000ARS o 10USD
                 </button>
               </div>
             </div>

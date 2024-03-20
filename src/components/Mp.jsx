@@ -7,7 +7,7 @@ export const Mp = () => {
 
     const [preferenceId, setPreferenceId] = useState(null)
 
-    initMercadoPago('TEST-d34b7891-5e67-440b-a103-ad50da9cfd82', {
+    initMercadoPago('APP_USR-5c57869b-f00b-4c04-a7f2-3db92d667417', {
         locale: 'es-AR',
     });
     // https://luci-web-backend-production.up.railway.app

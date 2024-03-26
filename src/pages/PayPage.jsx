@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { PatientContext } from "../context/PatientContext";
 import { Mp } from "../components";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const PayPage = () => {
-  const { patientData, shiftReservated } = useContext(PatientContext);
+  const navigate = useNavigate()
+  const { patientData, shiftReservated: shiftData } = useContext(PatientContext);
   const { name, surname, date, tel, email } = patientData;
-  const { fecha, horaInicio, horaFin } = shiftReservated;
+  const { fecha, horaInicio, horaFin } = shiftData;
 
   return (
     <section className="bg-gray-100 py-12 min-h-screen md:pt-16 lg:pt-28 xl:pt-48">
@@ -35,11 +38,34 @@ export const PayPage = () => {
             Confirmar Compra
           </button> */}
           <Mp />
-          {/* <div className="w-full md:px-16">
-            <PayPalScriptProvider>
-              <PayPalButtons onApprove={() => console.log('pago realizado')} />
+          <div className="w-full md:px-16">
+            <PayPalScriptProvider options={{
+              clientId: 'AfD5_J5oF-QwPo9jm2SaLmeluYJGdRgRV0bn_KB6bJ2xKgX6BMejeu5u8MVj-bOc0bpckirEclmLQRIK'
+            }}>
+              <PayPalButtons
+                style={{ color: 'gold', label: 'pay' }}
+                createOrder={async () => {
+                  const res = await fetch('http://localhost:3000/paypal-payment', {
+                    method: 'POST',
+                    headers: {
+                      "Content-Type": "application/json",
+                    }
+                  })
+                  const order = await res.json();
+                  console.log(order);
+                  return order.id;
+                }}
+                onApprove={async () => {
+                  await axios.post('http://localhost:3000/confirmate-paypal-payment', { patientData, shiftData })
+                  navigate('/realizatedPage')
+                  // actions.order.capture()
+                  console.log('pago hecho')
+                }}
+                onCancel={(data, actions) => console.log(data)}
+              />
+
             </PayPalScriptProvider>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>

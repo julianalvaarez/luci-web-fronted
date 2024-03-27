@@ -40,28 +40,27 @@ export const PayPage = () => {
           <Mp />
           <div className="w-full md:px-16">
             <PayPalScriptProvider options={{
-              clientId: 'AfD5_J5oF-QwPo9jm2SaLmeluYJGdRgRV0bn_KB6bJ2xKgX6BMejeu5u8MVj-bOc0bpckirEclmLQRIK'
+              clientId: 'AQloVzLM19RsxwhGf8XI6CilsVWs1pp1tYW9TiiZMsMTSi-PqK57M2JDtbu_jYyfTlrMgztVUWVa8Biw'
             }}>
               <PayPalButtons
                 style={{ color: 'gold', label: 'pay' }}
                 createOrder={async () => {
-                  const res = await fetch('http://localhost:3000/paypal-payment', {
+                  const res = await fetch('https://luci-web-backend-production.up.railway.app/paypal-payment', {
                     method: 'POST',
                     headers: {
                       "Content-Type": "application/json",
                     }
                   })
                   const order = await res.json();
-                  console.log(order);
                   return order.id;
                 }}
                 onApprove={async () => {
-                  await axios.post('http://localhost:3000/confirmate-paypal-payment', { patientData, shiftData })
+                  await axios.post('https://luci-web-backend-production.up.railway.app/confirmate-paypal-payment', { patientData, shiftData })
                   navigate('/realizatedPage')
                   // actions.order.capture()
                   console.log('pago hecho')
                 }}
-                onCancel={(data, actions) => console.log(data)}
+                onCancel={() => navigate('/')}
               />
 
             </PayPalScriptProvider>

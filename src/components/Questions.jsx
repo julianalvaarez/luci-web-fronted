@@ -27,8 +27,8 @@ export const Questions = () => {
           </div>
 
           <div className="flex flex-col lg:flex-1 md:mt-0 md:justify-center md:gap-10 md:mx-auto items-center mt-16 border border-green-600 p-7 space-y-4 bg--100 max-w-md">
-              <p className="text-xl md:text-2xl text-center font-semibold ">¿Seguis teniendo dudas?</p>
-              <button onClick={openWhatsapp} className="mx-auto flex items-center md:text-lg gap-2 bg-green-600 rounded-sm text-white py-1 px-3">CONTACTAME <FaWhatsapp /></button>
+            <p className="text-xl md:text-2xl text-center font-semibold ">¿Seguis teniendo dudas?</p>
+            <button onClick={openWhatsapp} className="mx-auto flex items-center md:text-lg gap-2 bg-green-600 rounded-sm text-white py-1 px-3">CONTACTAME <FaWhatsapp /></button>
           </div>
         </div>
       </section>

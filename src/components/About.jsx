@@ -1,42 +1,6 @@
-import { useState } from 'react';
 import luciFoto from '../assets/luci.jpg'
-import { useEffect } from 'react';
 
 export const About = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstallVisible, setIsInstallVisible] = useState(false);
-
-  useEffect(() => {
-    // Escucha el evento beforeinstallprompt
-    const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault(); // Previene que el prompt se muestre automáticamente
-      setDeferredPrompt(e); // Guarda el evento para usarlo luego
-      setIsInstallVisible(true); // Muestra el botón de instalación
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    // Limpieza del event listener
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
-  }, []);
-
-  const handleInstallClick = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt(); // Muestra el prompt
-      // Opcional: Maneja la respuesta del usuario
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('El usuario aceptó la instalación');
-        } else {
-          console.log('El usuario rechazó la instalación');
-        }
-        setDeferredPrompt(null);
-        setIsInstallVisible(false);
-      });
-    }
-  };
   function openInstagram() {
     window.open('https://www.instagram.com/luciana_cresia_nutricion')
   }
@@ -58,11 +22,6 @@ export const About = () => {
               Tengo amplia experiencia en gastronomía por lo que me permite asegurarles que <strong>comer sano y rico, van de la mano.</strong>
             </p>
             <div className='md:mx-10 flex gap-3 md:gap-5 mx-auto'>
-            {isInstallVisible && (
-        <button onClick={handleInstallClick}>
-          Instalar App
-        </button>
-      )}
               <button onClick={openInstagram} className='px-4 py-1 sm:px-5 sm:py-2 bg-orange-300 font-semibold text-gray-900 hover:bg-orange-200 active:bg-orange-400'>INSTAGRAM</button>
               <button onClick={openWhatsapp} className='px-4 py-1 sm:px-5 sm:py-2 bg-orange-300 font-semibold text-gray-900 hover:bg-orange-200 active:bg-orange-400'>WHATSAPP</button>
             </div>
